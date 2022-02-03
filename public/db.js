@@ -65,3 +65,12 @@ request.onsuccess = function (e) {
     checkDatabase();
   }
 };
+
+const saveRecord = (record) => {
+  console.log("Save record initialized");
+  const transaction = db.transaction(["BudgetStore"], "readwrite");
+  const store = transaction.objectStore("BudgetStore");
+  store.add(record);
+};
+
+window.addEventListener("online", checkDatabase);
